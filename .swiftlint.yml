@@ -1,0 +1,138 @@
+disabled_rules:
+  - file_length #disabled 14.10.2022 because it doesn't help anyhow
+
+opt_in_rules:
+  - fallthrough
+  - accessibility_trait_for_button
+  - shorthand_argument
+  - closure_body_length
+  - implicit_return
+  - legacy_multiple
+  - period_spacing
+  - prefer_self_type_over_type_of_self
+  - private_action
+  - private_outlet
+  - identifier_name
+  - operator_usage_whitespace
+  - contains_over_first_not_nil
+  - override_in_extension
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - closure_end_indentation
+  - overridden_super_call
+  - literal_expression_end_indentation
+  - first_where
+  - explicit_init
+  - closure_spacing
+  - yoda_condition
+  - empty_count
+  - collection_alignment
+  - discouraged_none_name
+  - empty_collection_literal
+  - empty_string
+  - enum_case_associated_values_count
+  - fatal_error_message
+  - file_name_no_space
+  - identical_operands
+  - joined_default_parameter
+  - optional_enum_case_matching
+  - prefer_zero_over_explicit_init
+  - single_test_class
+  - sorted_first_last
+  - test_case_accessibility
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - weak_delegate
+  - xct_specific_matcher
+  - discouraged_object_literal
+  - multiline_literal_brackets
+  - number_separator
+  - prefer_self_in_static_references
+  - static_operator
+  - for_where
+  - void_function_in_ternary
+  - closure_parameter_position
+  - shorthand_optional_binding
+
+excluded:
+
+analyzer_rules: # Rules run by `swiftlint analyze`
+  - unused_declaration
+  - unused_import
+
+custom_rules:
+  space_after_opening_brace:
+    included: ".*\\.swift"
+    name: "Brace Space"
+    message: "Opening brace should be followed by a space or a newline"
+    regex: "\\{[^ \n\r\\}]"
+    match_kinds:
+      - argument
+      - identifier
+      - keyword
+      - parameter
+    severity: warning
+
+  empty_first_line:
+    name: "Empty First Line"
+    message: "There should be an empty line after a declaration"
+    regex: "(^[ a-zA-Z ]*(?:class) (?!(?:var|let))[ a-zA-Z:]*\\{\n *\\S+)"
+
+  auto_generated_leftovers:
+    name: "Empty Methods"
+    message: "Delete auto-generated functions that you don't use"
+    regex: 'func [^\n]*\{\n(\s*super\.[^\n]*\n(\s*\/\/[^\n]*\n)*|(\s*\/\/[^\n]*\n)+)\s*\}'
+
+  objc_same_line:
+    name: "@objc Placement"
+    message: "@objc needs to be on the same line if used without params"
+    regex: '@objc\n'
+
+  os_log_import_unify:
+    name: "Unify OSLog import"
+    message: "os.log is deprecated, use OSLog instead"
+    regex: "import os.log"
+
+  erase_to_any_publisher_last:
+    name: "EraseToAnyPublisher Should Be Last"
+    regex: '\.eraseToAnyPublisher\(\)(\.|\n\s+\.)'
+    message: "The call to .eraseToAnyPublisher() should be the last in the chain."
+
+# Additional rules without enforcing
+#
+# Always use `self.` to prefix access to instance variables
+# Optionally use `self.` to prefix method calls. Default to not prefixing unless really needed.
+#
+# All class type declarations should have an empty line after and before `{` and `}` respectively.
+# For enums and structs this is optional, the larger the more likely to have empty lines padding.
+#
+
+# Rule configuration
+colon:
+  apply_to_dictionaries: false
+cyclomatic_complexity:
+  ignores_case_statements: true
+identifier_name:
+  # All small words used in our app and acceptable abbreviation excluded
+  excluded: [x, y, i, j, to, id]
+  allowed_symbols: "_"
+  min_length: 0
+  max_length:
+    warning: 50
+type_name:
+  excluded: [ID]
+  max_length:
+    warning: 50
+line_length:
+  warning: 200
+  error: 200
+statement_position:
+  statement_mode: uncuddled_else
+large_tuple:
+  warning: 3
+type_body_length:
+  warning: 300
+  error: 450
+number_separator:
+  minimum_length: 5
+  minimum_fraction_length: 7
