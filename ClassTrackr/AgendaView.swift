@@ -26,7 +26,7 @@ struct AgendaView: View {
                             Text(teacher)
                                 .font(.subheadline)
                         }
-                        if let room = session.room {
+                        if let room = session.room, !room.isEmpty {
                             Text(room)
                                 .font(.subheadline)
                         }
