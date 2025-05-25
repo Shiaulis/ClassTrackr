@@ -14,7 +14,7 @@ struct ClassTrackrApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AgendaView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

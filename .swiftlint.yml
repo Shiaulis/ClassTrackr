@@ -112,6 +112,8 @@ colon:
   apply_to_dictionaries: false
 cyclomatic_complexity:
   ignores_case_statements: true
+trailing_comma:
+  mandatory_comma: true
 identifier_name:
   # All small words used in our app and acceptable abbreviation excluded
   excluded: [x, y, i, j, to, id]
